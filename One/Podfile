@@ -1,2 +1,2 @@
-platform :ios, ‘7.1’
-pod ‘Canvas’
+platform :ios, '7.1'
+pod 'Canvas'
