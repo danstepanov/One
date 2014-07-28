@@ -117,7 +117,6 @@
 		D07F0FC51984F20F00262167 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FBA1984F20F00262167 /* SystemConfiguration.framework */; };
 		D07F0FC71984F38600262167 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FC61984F38600262167 /* FacebookSDK.framework */; };
 		D07F0FC91984F39800262167 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FC81984F39800262167 /* Parse.framework */; };
-		D07F0FCB19851A8A00262167 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FCA19851A8A00262167 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,7 +295,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D07F0FCB19851A8A00262167 /* XCTest.framework in Frameworks */,
 				D07F0FBB1984F20F00262167 /* Accounts.framework in Frameworks */,
 				D07F0FBC1984F20F00262167 /* AdSupport.framework in Frameworks */,
 				D07F0FBD1984F20F00262167 /* CFNetwork.framework in Frameworks */,
