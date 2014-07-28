@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UIColor+OneColor.h"
 #import "OneBaseTableViewController.h"
+#import "PFXSocialButton.h"
 
-@interface TimelineViewController : OneBaseTableViewController
+@interface TimelineViewController : OneBaseTableViewController {
+	NSIndexPath *expandedPath;
+}
 
 @property (nonatomic, assign) BOOL showPushDetail;
 

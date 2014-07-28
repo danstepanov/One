@@ -10,14 +10,13 @@
 
 @interface AppDelegate ()
 @property (nonatomic, weak) UIStoryboard *storyboard;
-@property (nonatomic, strong) HomeViewController *homeVC;
+@property (nonatomic, strong) PFXHomeViewController *homeVC;
 @end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // DO SOME SHIT WITH DATA
     [Parse setApplicationId:@"QUCJSQNfkxKOFyoLf39E0p7pAKmayU9HiiGEfdRU"
                   clientKey:@"gUV6R2z7S41gGsXpqCE3aeDjJ9kCpww5LtkDzIkt"];
     
@@ -25,26 +24,28 @@
     
     [PFTwitterUtils initializeWithConsumerKey:@"EUjMsvd3sfUv6fJZ0BbSUsCf0"
                                consumerSecret:@"mjxX3vgaumhJRi1OLNUgN6iUX6BQJPfdArX89SErYNSLckwACH"];
-    
-    
-    SimpleAuth.configuration[@"instagram"] = @{
-                                               @"client_id": @"6aeb283e3011433a8e693055957bd95c",
-                                               SimpleAuthRedirectURIKey: @"onemessenger://auth/instagram"
-                                               };
-    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     // Do all the UI stuff
     [self setUpUserInterface];
     [self ensureLogIn];
     
+    
+	//The fuck does this do
+    /*NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	if (![prefs boolForKey:@"LaunchedOnce"]) {
+		[self performSelector:@selector(displayDemoView) withObject:nil afterDelay:1.0];
+		[prefs setBool:YES forKey:@"LaunchedOnce"];
+	}
+	[self performSelector:@selector(fadeInApplication) withObject:nil afterDelay:.2];*/
+	
     return YES;
 }
 
 - (void)ensureLogIn {
     // Check if we're logged in on Parse and do that shit if necessary
     if ([PFUser currentUser] == nil) {
-        HomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        PFXHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PFXHomeViewController"];
         NSLog(@"Pointer to newly instantiated VC: %@", homeVC);
         
         [self.window.rootViewController presentViewController:homeVC animated:YES completion:^(void){
@@ -54,68 +55,71 @@
     }
 }
 
-- (void)setUpUserInterface
-{
-    // Override point for customization after application launch.
-    self.storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+- (void)setUpUserInterface {
     
-    OneTabBarController *tabBarController = (OneTabBarController *)self.window.rootViewController;
-    UINavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainNavigationController"];
+    // Override point for customization after application launch.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.window.backgroundColor = [UIColor whiteColor];
     
     //The TimelineViewControler holder.
-    OneSocialPagingViewer *oneSocialPagingViewer = (OneSocialPagingViewer *)navigationController.topViewController;
-    
+    OneSocialPagingViewer *oneSocialPagingViewer = (OneSocialPagingViewer *)self.window.rootViewController;
+    OneTabBarController *tabBarController = [[OneTabBarController alloc] init];
     ActivityViewController *activityViewController = [[ActivityViewController alloc] init];
     MessagesViewController *messagesViewController = [[MessagesViewController alloc] init];
     ProfileViewController *profileViewContorller = [[ProfileViewController alloc] init];
     SearchViewController *searchViewController = [[SearchViewController alloc] init];
     
     //Set up individuals navigation controllers.
+	UINavigationController *pageViewerNav = [[UINavigationController alloc] initWithRootViewController:oneSocialPagingViewer];
     UINavigationController *activityViewControllerNav = [[UINavigationController alloc] initWithRootViewController:activityViewController];
     UINavigationController *messagesViewControllerNav = [[UINavigationController alloc] initWithRootViewController:messagesViewController];
     UINavigationController *profileViewControllerNav = [[UINavigationController alloc] initWithRootViewController:profileViewContorller];
     UINavigationController *searchViewControllerNav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     
+	[pageViewerNav.navigationBar setHidden:YES];
+    
     //Set the view controllers.
-    [tabBarController setViewControllers:@[navigationController, activityViewControllerNav, messagesViewControllerNav, profileViewControllerNav, searchViewControllerNav]];
+    [tabBarController setViewControllers:@[pageViewerNav, activityViewControllerNav, messagesViewControllerNav, profileViewControllerNav, searchViewControllerNav]];
+	[tabBarController.tabBar setFrame:CGRectMake(0, self.window.frame.size.height, tabBarController.tabBar.frame.size.width, tabBarController.tabBar.frame.size.width)];
     
-    //Set the root view controller.
-    self.window.rootViewController = tabBarController;
+    //Hopefully gets rid of navigation bar shadow
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
+    self.window.rootViewController = tabBarController; //intro;
+    // WHY IS THIS EVEN
+	
     //The pages for the TimeLineViewController
-    TimelineViewController *tableViewController1 = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController1"];
-    TimelineViewController *tableViewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController2"];
-    TimelineViewController *tableViewController3 = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController3"];
-    TimelineViewController *tableViewController4 = [self.storyboard instantiateViewControllerWithIdentifier:@"TableViewController4"];
+    TimelineViewController *tableViewController1 = [storyboard instantiateViewControllerWithIdentifier:@"TableViewController1"];
+    TimelineViewController *tableViewController2 = [storyboard instantiateViewControllerWithIdentifier:@"TableViewController2"];
+    TimelineViewController *tableViewController3 = [storyboard instantiateViewControllerWithIdentifier:@"TableViewController3"];
+    TimelineViewController *tableViewController4 = [storyboard instantiateViewControllerWithIdentifier:@"TableViewController4"];
     
     /*
      Create the tabs (this could probably be done with a 'for' statement
      (maybe when the accounts are working, we'll do that).
      */
-    UITabBarItem *feedTab = [[UITabBarItem alloc] initWithTitle:@"Feed" image:[UIImage imageNamed:@"Timeline.png"] tag:1];
-    [oneSocialPagingViewer setTabBarItem:feedTab];
+    UITabBarItem *tab1 = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Timeline.png"] tag:1];
+    [oneSocialPagingViewer setTabBarItem:tab1];
     
-    UITabBarItem *activityTab = [[UITabBarItem alloc] initWithTitle:@"Activity" image:[UIImage imageNamed:@"Activity.png"] tag:1];
+    UITabBarItem *activityTab = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Activity.png"] tag:1];
     [activityViewController setTabBarItem:activityTab];
     
-    UITabBarItem *messagesTab = [[UITabBarItem alloc] initWithTitle:@"Messages" image:[UIImage imageNamed:@"Messages.png"] tag:1];
+    UITabBarItem *messagesTab = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Messages.png"] tag:1];
     [messagesViewController setTabBarItem:messagesTab];
     
-    UITabBarItem *profileTab = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"Profile.png"] tag:1];
+    UITabBarItem *profileTab = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Profile.png"] tag:1];
     [profileViewContorller setTabBarItem:profileTab];
     
-    UITabBarItem *searchTab = [[UITabBarItem alloc] initWithTitle:@"Search" image:[UIImage imageNamed:@"Search.png"] tag:1];
+    UITabBarItem *searchTab = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Search.png"] tag:1];
     [searchViewController setTabBarItem:searchTab];
     
     //Create an array with the tab bar items.
-    NSArray *tabBarArray = [[NSArray alloc] initWithObjects:feedTab,activityTab,messagesTab,profileTab,searchTab, nil];
+    NSArray *tabBarArray = [[NSArray alloc] initWithObjects:tab1,activityTab,messagesTab,profileTab,searchTab, nil];
     
-    //Iterate through the array
+    //Iterate through the array.
     for (UITabBarItem *tabBarItem in tabBarArray) {
-        // Move the tabBarItem image down vertically within the navigation bar
-        //tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+        tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
     }
-    
     //Set the pages for the TimeLineViewController.
     oneSocialPagingViewer.viewControllers = @[tableViewController1, tableViewController2, tableViewController3, tableViewController4];
     
@@ -130,9 +134,44 @@
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+
+- (void)fadeInApplication {
+	UINavigationController *vv = ((UITabBarController *)self.window.rootViewController).viewControllers[0];
+	UINavigationBar *bar = vv.topViewController.navigationController.navigationBar;
+	CGFloat origY = bar.frame.origin.y;
+	bar.frame = CGRectMake(0, -64, bar.frame.size.width, bar.frame.size.height);
+	bar.hidden = NO;
+	OneSocialPagingViewer *pg = (OneSocialPagingViewer *)[vv topViewController];
+		
+	[pg.centerContainerView setAlpha:0.0];
+	[pg.centerContainerView setHidden:NO];
+	
+	UITabBarController *tb = (UITabBarController *)self.window.rootViewController;
+	
+	[UIView animateWithDuration:.7 animations:^ {
+		[bar setFrame:CGRectMake(0, origY, bar.frame.size.width, bar.frame.size.height)];
+		[tb.tabBar setFrame:CGRectMake(0, self.window.frame.size.height-tb.tabBar.frame.size.height, tb.tabBar.frame.size.width, tb.tabBar.frame.size.height)];
+	} completion:^(BOOL fin) {
+		[UIView beginAnimations:nil context:nil];
+		[pg.centerContainerView setAlpha:1.0];
+			
+		[UIView commitAnimations];
+	}];
+	
+	SystemSoundID soundID;
+	NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/whoosh04.wav", [[NSBundle mainBundle] resourcePath]]];
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+	AudioServicesPlaySystemSound (soundID);
+}
+/*
+- (void)displayDemoView {
+	//TODO: (REMOVE)TESTING
+    IntroPageViewController *intro = [[IntroPageViewController alloc] init];
+    //Set the root view controller.
+	[self.window.rootViewController presentModalViewController:intro animated:YES];
+}*/
+
+- (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
@@ -151,7 +190,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

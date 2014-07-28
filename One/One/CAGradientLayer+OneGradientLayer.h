@@ -10,8 +10,8 @@
 
 @interface CAGradientLayer (OneGradientLayer)
 
-+ (CAGradientLayer*)twitterGradientLayer;
-+ (CAGradientLayer*)facebookGradientLayer;
-+ (CAGradientLayer*)instagramGradientLayer;
++ (CAGradientLayer *)twitterGradientLayer;
++ (CAGradientLayer *)facebookGradientLayer;
++ (CAGradientLayer *)instagramGradientLayer;
 
 @end

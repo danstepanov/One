@@ -155,12 +155,13 @@ static NSArray *relationshipButtons;
         [relationshipButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     }
     
-    [facebookRelationshipButton setTitle:@"Friends" forState:UIControlStateNormal];
+    [facebookRelationshipButton setTitle:@"Unfriend" forState:UIControlStateNormal];
     [twitterRelationshipButton setTitle:@"Follow" forState:UIControlStateNormal];
-    [instagramRelationshipButton setTitle:@"Follow" forState:UIControlStateNormal];
+    [instagramRelationshipButton setTitle:@"Unfollow" forState:UIControlStateNormal];
     
-    twitterRelationshipButton.frame = CGRectMake(255, 40, 60, 10);
-    instagramRelationshipButton.frame = CGRectMake(255, 40, 60, 10);
+    twitterRelationshipButton.frame = CGRectMake(255, 40, 60, 13);
+    instagramRelationshipButton.frame = CGRectMake(255, 40, 60, 20);
+    facebookRelationshipButton.frame = CGRectMake(255,40,70,13);
     
     [facebookProfileView addSubview:facebookEditButton];
     [facebookProfileView addSubview:facebookRelationshipButton];

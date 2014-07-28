@@ -15,13 +15,14 @@ typedef enum {
     kServiceTypeInstagram
     } kServiceType;
 
-@interface OneTableViewCell : UITableViewCell{
+@interface OneTableViewCell : UITableViewCell {
     IBOutlet AGMedallionView *avatarImageView;
-    IBOutlet UILabel *timeLabel;
-    IBOutlet UILabel *usernameLabel;
-    IBOutlet UITextView *textView;
-    IBOutlet UILabel *serviceLabel;
 }
+@property (nonatomic) IBOutlet UILabel *timeLabel;
+@property (nonatomic) IBOutlet UILabel *usernameLabel;
+@property (nonatomic) IBOutlet UILabel *textView;;
+@property (nonatomic) IBOutlet UILabel *serviceLabel;
+
 
 /**
  Sets the avatar of the cell.

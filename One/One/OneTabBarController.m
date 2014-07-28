@@ -6,9 +6,7 @@
 //
 //
 
-#import "AppDelegate.h"
 #import "OneTabBarController.h"
-#import "HomeViewController.h"
 
 @interface OneTabBarController ()
 

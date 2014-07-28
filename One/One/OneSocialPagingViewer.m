@@ -20,18 +20,6 @@ static AGMedallionView *avatarView;
 
 @interface OneSocialPagingViewer () <UIScrollViewDelegate>
 
-@property (nonatomic, strong) UIView *centerContainerView;
-
-@property (nonatomic, strong) UIScrollView *paggingScrollView;
-
-@property (nonatomic, strong) OnePagingNavBar *paggingNavbar;
-
-@property (nonatomic, assign) NSInteger currentPage;
-
-
-@property (nonatomic, strong) UIViewController *leftViewController;
-@property (nonatomic, strong) UIViewController *rightViewController;
-
 @end
 
 @implementation OneSocialPagingViewer
@@ -47,7 +35,7 @@ static AGMedallionView *avatarView;
         return;
     }
     
-    [self.paggingScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[self.paggingScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
         CGRect contentViewFrame = viewController.view.bounds;
@@ -71,7 +59,10 @@ static AGMedallionView *avatarView;
 
 - (UIView *)centerContainerView {
     if (!_centerContainerView) {
-        _centerContainerView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _centerContainerView = [[UIView alloc] initWithFrame:CGRectZero];
+		CGFloat y = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height;
+		[_centerContainerView setFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - (y + 20 + 49))];
+		[_centerContainerView setHidden:YES];
         _centerContainerView.backgroundColor = [UIColor whiteColor];
         
         [_centerContainerView addSubview:self.paggingScrollView];
@@ -179,7 +170,7 @@ static AGMedallionView *avatarView;
     
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor flatLightBlueColor];
     self.navigationItem.rightBarButtonItem = composeButton;
-    
+    [self.navigationController setNavigationBarHidden:NO];
     //Add the user avatar view.
     avatarView = [[AGMedallionView alloc] initWithFrame:CGRectMake(7, 5, 35, 35)];
     avatarView.image = [UIImage imageNamed:@"Avatar.png"];
@@ -199,7 +190,6 @@ static AGMedallionView *avatarView;
         
         
     }
-    
     
     self.navigationItem.titleView = self.paggingNavbar;
 }

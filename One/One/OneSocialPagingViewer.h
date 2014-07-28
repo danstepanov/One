@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OnePagingNavBar.h"
 
 typedef void(^XHDidChangedPageBlock)(NSInteger currentPage, NSString *title);
 
@@ -16,6 +17,16 @@ typedef void(^XHDidChangedPageBlock)(NSInteger currentPage, NSString *title);
 
 @property (nonatomic, strong) NSArray *viewControllers;
 
+@property (nonatomic, strong) UIView *centerContainerView;
+
+@property (nonatomic, strong) UIScrollView *paggingScrollView;
+
+@property (nonatomic, strong) OnePagingNavBar *paggingNavbar;
+
+@property (nonatomic, assign) NSInteger currentPage;
+
+@property (nonatomic, strong) UIViewController *leftViewController;
+@property (nonatomic, strong) UIViewController *rightViewController;
 - (instancetype)initWithLeftViewController:(UIViewController *)leftViewController;
 
 - (instancetype)initWithRightViewController:(UIViewController *)rightViewController;

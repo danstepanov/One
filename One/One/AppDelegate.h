@@ -2,24 +2,24 @@
 //  AppDelegate.h
 //  One
 //
-//  Created by Micah Benn on 7/17/14.
+//  Created by Dan Stepanov and Micah Benn on 7/17/14.
 //
 //
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import <SimpleAuth/SimpleAuth.h>
 #import <FacebookSDK/FacebookSDK.h>
-
 #import "OneTabBarItem.h"
 #import "OneTabBarController.h"
 #import "OneSocialPagingViewer.h"
+#import "PFXHomeViewController.h"
+#import "LoginViewController.h"
 #import "TimelineViewController.h"
 #import "ActivityViewController.h"
 #import "MessagesViewController.h"
 #import "ProfileViewController.h"
 #import "SearchViewController.h"
-#import "HomeViewController.h"
+#import "IntroPageViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

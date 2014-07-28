@@ -37,7 +37,7 @@ static UILabel *titleLabel;
     }];
     
     [self.titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
-        CGRect titleLabelFrame = CGRectMake((idx * (kIPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
+        CGRect titleLabelFrame = CGRectMake((idx * (kIPad ? 320 : 100)), 3, CGRectGetWidth(self.bounds), 20);
         titleLabel = (UILabel *)[self viewWithTag:kLabelBaseTag + idx];
         
         if (!titleLabel) {
@@ -48,7 +48,7 @@ static UILabel *titleLabel;
         }
         titleLabel.hidden = NO;
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17];
+        titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.backgroundColor = [UIColor clearColor];
         
@@ -139,7 +139,7 @@ static UILabel *titleLabel;
     if (!_pageControl) {
         _pageControl = [[DDPageControl alloc] init];
         _pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        _pageControl.frame = CGRectMake(60, 13, _pageControl.frame.size.width, _pageControl.frame.size.height);
+        _pageControl.frame = CGRectMake(60, 7, _pageControl.frame.size.width, _pageControl.frame.size.height);
         _pageControl.hidesForSinglePage = YES;
         _pageControl.currentPage = self.currentPage;
     }

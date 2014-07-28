@@ -19,7 +19,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        // self.navigationController = [[UINavigationController alloc] initWithRootViewController:self];
     }
     return self;
 }
@@ -39,12 +38,12 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17];
+    titleLabel.textColor = [UIColor blackColor];
     
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:title];
     [attrStr addAttribute:NSKernAttributeName value:@(0.5) range:NSMakeRange(0, attrStr.length)];
-    
     titleLabel.attributedText = attrStr;
-        
+	self.navigationItem.titleView = titleLabel;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

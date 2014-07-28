@@ -9,7 +9,7 @@
 #import "OneTableViewCell.h"
 
 @implementation OneTableViewCell
-@synthesize username,text,avatar,serviceType,time;
+@synthesize username,text,avatar,serviceType,time, serviceLabel, usernameLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -20,27 +20,25 @@
     return self;
 }
 
+
 - (void)setServiceType:(kServiceType)serviceType_{
     
     if (serviceType_ == kServiceTypeTwitter){
         serviceLabel.text = @"Twitter";
         serviceLabel.textColor = [UIColor twitterNavBarColor];
-    } else if (serviceType_ == kServiceTypeFacebook){
+    }else if (serviceType_ == kServiceTypeFacebook){
         serviceLabel.text = @"Facebook";
         serviceLabel.textColor = [UIColor facebookNavBarColor];
-    } else if (serviceType_ == kServiceTypeInstagram){
+    }else if (serviceType_ == kServiceTypeInstagram){
         serviceLabel.text = @"Instagram";
         serviceLabel.textColor = [UIColor instagramNavBarColor];
-    } 
+    }
 }
+
 
 - (void)layoutSubviews{
         
     avatarImageView.image = avatar;
-    textView.text = text;
-    
-    textView.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    textView.textColor = [UIColor darkGrayColor];
     
     NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] initWithString:username];
     [attrStr addAttribute:NSKernAttributeName value:@(0.5) range:NSMakeRange(0, attrStr.length)];
