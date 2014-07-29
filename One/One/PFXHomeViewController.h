@@ -10,4 +10,8 @@
 
 @interface PFXHomeViewController : UIViewController
 
+- (IBAction)logInPushed:(id)sender;
+- (IBAction)signUpPushed:(id)sender;
+
+
 @end

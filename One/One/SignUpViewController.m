@@ -1,20 +1,18 @@
 //
-//  PFXHomeViewController.m
-//  one
+//  SignUpViewController.m
+//  One
 //
-//  Created by Siberia on 7/27/14.
+//  Created by Sam Moore on 7/28/14.
 //
 //
 
-#import "PFXHomeViewController.h"
-#import "LoginViewController.h"
 #import "SignUpViewController.h"
 
-@interface PFXHomeViewController ()
+@interface SignUpViewController ()
 
 @end
 
-@implementation PFXHomeViewController
+@implementation SignUpViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,14 +25,8 @@
 
 - (void)viewDidLoad
 {
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
-	[self.view addGestureRecognizer:tap];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-
-- (void)dismiss {
-	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,15 +45,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)logInPushed:(id)sender {
-    LoginViewController *logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"logIn"];
-    [self presentViewController:logIn animated:YES completion:nil];
-}
-
-- (IBAction)signUpPushed:(id)sender {
-    SignUpViewController *signUp = [self.storyboard instantiateViewControllerWithIdentifier:@"signUp"];
-    [self presentViewController:signUp animated:YES completion:nil];
-}
 
 @end

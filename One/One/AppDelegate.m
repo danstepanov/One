@@ -28,8 +28,8 @@
     
     // Do all the UI stuff
     [self setUpUserInterface];
+    [self fadeInApplication];
     [self ensureLogIn];
-    
     
 	//The fuck does this do
     /*NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -44,8 +44,10 @@
 
 - (void)ensureLogIn {
     // Check if we're logged in on Parse and do that shit if necessary
+    NSLog(@"%@", self.storyboard);
+    
     if ([PFUser currentUser] == nil) {
-        PFXHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PFXHomeViewController"];
+        PFXHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HOME1"];
         NSLog(@"Pointer to newly instantiated VC: %@", homeVC);
         
         [self.window.rootViewController presentViewController:homeVC animated:YES completion:^(void){
@@ -58,12 +60,15 @@
 - (void)setUpUserInterface {
     
     // Override point for customization after application launch.
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *storyboard = self.storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.window.backgroundColor = [UIColor whiteColor];
     
     //The TimelineViewControler holder.
-    OneSocialPagingViewer *oneSocialPagingViewer = (OneSocialPagingViewer *)self.window.rootViewController;
-    OneTabBarController *tabBarController = [[OneTabBarController alloc] init];
+    NSLog(@"%@", self.window.rootViewController);
+    
+    OneTabBarController *tabBarController = (OneTabBarController *)self.window.rootViewController;
+    
+    OneSocialPagingViewer *oneSocialPagingViewer = [[OneSocialPagingViewer alloc] init];
     ActivityViewController *activityViewController = [[ActivityViewController alloc] init];
     MessagesViewController *messagesViewController = [[MessagesViewController alloc] init];
     ProfileViewController *profileViewContorller = [[ProfileViewController alloc] init];
@@ -84,9 +89,6 @@
     
     //Hopefully gets rid of navigation bar shadow
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    
-    self.window.rootViewController = tabBarController; //intro;
-    // WHY IS THIS EVEN
 	
     //The pages for the TimeLineViewController
     TimelineViewController *tableViewController1 = [storyboard instantiateViewControllerWithIdentifier:@"TableViewController1"];
@@ -96,7 +98,7 @@
     
     /*
      Create the tabs (this could probably be done with a 'for' statement
-     (maybe when the accounts are working, we'll do that).
+     (maybe when the accounts are working, we'll do that)).
      */
     UITabBarItem *tab1 = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Timeline.png"] tag:1];
     [oneSocialPagingViewer setTabBarItem:tab1];
@@ -139,7 +141,7 @@
 	UINavigationController *vv = ((UITabBarController *)self.window.rootViewController).viewControllers[0];
 	UINavigationBar *bar = vv.topViewController.navigationController.navigationBar;
 	CGFloat origY = bar.frame.origin.y;
-	bar.frame = CGRectMake(0, -64, bar.frame.size.width, bar.frame.size.height);
+	// bar.frame = CGRectMake(0, -64, bar.frame.size.width, bar.frame.size.height);
 	bar.hidden = NO;
 	OneSocialPagingViewer *pg = (OneSocialPagingViewer *)[vv topViewController];
 		
