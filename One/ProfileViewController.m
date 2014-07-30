@@ -178,6 +178,8 @@ static NSArray *relationshipButtons;
 
 }
 
+
+
 - (void)headerDidScrollWithPercent:(CGFloat)percent{
     
     if (percent < 3.0){
@@ -206,6 +208,8 @@ static NSArray *relationshipButtons;
         }];
     }
 }
+
+
 
 - (void)setBackgroundColor:(UIColor*)color{
     
