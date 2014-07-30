@@ -1,0 +1,47 @@
+PODS:
+  - AFNetworking (2.3.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.3.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.3.1)
+  - AFNetworking/Security (2.3.1)
+  - AFNetworking/Serialization (2.3.1)
+  - AFNetworking/UIKit (2.3.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - CMDQueryStringSerialization (0.3.0)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI
+  - ReactiveCocoa/Core (2.3.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
+    - ReactiveCocoa/Core
+  - SimpleAuth/Core (0.3.2):
+    - CMDQueryStringSerialization
+    - ReactiveCocoa
+  - SimpleAuth/Instagram (0.3.2):
+    - SimpleAuth/Core
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.2)
+  - SimpleAuth/Instagram
+
+SPEC CHECKSUMS:
+  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  CMDQueryStringSerialization: d70fa80a8fd7ee06a269cd2bde3de4c04a2d444c
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
+  SimpleAuth: ae531fc2986b34e6fb6975885b0e42cf86bcc918
+
+COCOAPODS: 0.33.1
