@@ -12,6 +12,8 @@
 
 - (IBAction)logInPushed:(id)sender;
 - (IBAction)signUpPushed:(id)sender;
+- (void)completeSignUp;
+- (void)completeLogIn;
 
 
 @end

@@ -826,6 +826,9 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
+					13CD7B621977DD5200C3F7CC = {
+						DevelopmentTeam = Z5AR6RGC9X;
+					};
 					13CD7B831977DD5300C3F7CC = {
 						TestTargetID = 13CD7B621977DD5200C3F7CC;
 					};

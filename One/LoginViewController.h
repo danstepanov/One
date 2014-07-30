@@ -12,6 +12,8 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 - (void)playSignInSound;
+- (IBAction)loginButtonTouched:(id)sender;
+- (IBAction)backButtonPushed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *loginEmailField;
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;

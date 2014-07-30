@@ -34,13 +34,30 @@
 }
 
 - (void)dismiss {
-	[self dismissViewControllerAnimated:YES completion:nil];
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)presentNewUserIntro {
+    // TODO: real into presentation whatever something legitimate
+    [self dismiss];
+}
+
+- (void)completeSignUp {
+    [self dismissViewControllerAnimated:YES completion:^ {
+        [self presentNewUserIntro];
+    }];
+}
+
+- (void)completeLogIn {
+    [self dismissViewControllerAnimated:YES completion:^ {
+        [self dismiss];
+    }];
 }
 
 /*

@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "PFXHomeViewController.h"
 
 
 @interface LoginViewController ()
@@ -69,11 +69,14 @@
                 [alertView show];
             }
             else {
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                [(PFXHomeViewController *)self.presentingViewController completeLogIn];
             }
         }];
     }
 
+}
+
+- (IBAction)backButtonPushed:(id)sender {
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
