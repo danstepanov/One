@@ -12,6 +12,10 @@
 #import "CAGradientLayer+OneGradientLayer.h"
 #import "DZNSegmentedControl.h"
 #import "UIScrollView+APParallaxHeader.h"
+#import "Parse/Parse.h"
+#import "PFXHomeViewController.h"
+
+
 
 #define kHeaderHeight 310
 
@@ -142,6 +146,9 @@ static NSArray *relationshipButtons;
     editButtons = @[facebookEditButton,twitterEditButton,instagramEditButton];
     relationshipButtons = @[facebookRelationshipButton,twitterRelationshipButton,instagramRelationshipButton];
     
+    [facebookEditButton addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:facebookEditButton];
+    
     for (UIButton *editButton in editButtons) {
         editButton.frame = CGRectMake(10, 40, 40, 10);
         [editButton setTitle:@"Edit" forState:UIControlStateNormal];
@@ -209,7 +216,19 @@ static NSArray *relationshipButtons;
     }
 }
 
-
+- (IBAction)logOut:(id)sender
+{
+    [PFUser logOut];
+    if ([PFUser currentUser] == nil) {
+        PFXHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HOME1"];
+        NSLog(@"Pointer to newly instantiated VC: %@", homeVC);
+        
+        [self presentViewController:homeVC animated:YES completion:^(void){
+            NSLog(@"Log In/Sign Up (HomeViewController) modal has opened, pointer: %@",
+                  self.presentedViewController);
+        }];
+    }
+}
 
 - (void)setBackgroundColor:(UIColor*)color{
     
