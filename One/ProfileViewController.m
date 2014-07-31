@@ -220,10 +220,13 @@ static NSArray *relationshipButtons;
 {
     [PFUser logOut];
     if ([PFUser currentUser] == nil) {
-        PFXHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HOME1"];
+        NSLog(@"Root View Controller of ProfileVC: %@", self.tabBarController.storyboard);
+        PFXHomeViewController *homeVC = [self.tabBarController.storyboard instantiateViewControllerWithIdentifier:@"HOME1"];
         NSLog(@"Pointer to newly instantiated VC: %@", homeVC);
         
         [self presentViewController:homeVC animated:YES completion:^(void){
+            [self.tabBarController setSelectedIndex:0];
+                // This makes it so upon log in it will open to Timeline everytime.
             NSLog(@"Log In/Sign Up (HomeViewController) modal has opened, pointer: %@",
                   self.presentedViewController);
         }];
@@ -300,5 +303,7 @@ static NSArray *relationshipButtons;
         return 0;
     }
 }
+
+
 
 @end
