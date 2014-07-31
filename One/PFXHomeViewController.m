@@ -27,9 +27,11 @@
 
 - (void)viewDidLoad
 {
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+	// WHY close the log in view if the if you tap the background, allowing the user to
+    // access the UI without logging in?
+    /* UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
 	[self.view addGestureRecognizer:tap];
-    [super viewDidLoad];
+    [super viewDidLoad]; */
     // Do any additional setup after loading the view.
 }
 

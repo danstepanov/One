@@ -55,7 +55,7 @@
 	AudioServicesPlaySystemSound (soundID);
 }
 - (IBAction)loginButtonTouched:(id)sender {
-    NSString *email = [self.loginEmailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *email = [[self.loginEmailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseStringWithLocale:nil];
     NSString *password = [self.loginPasswordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if ([email length] == 0 || [password length] == 0 ) {
