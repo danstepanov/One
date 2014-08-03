@@ -56,25 +56,7 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
-    NSString *email = [self.logInEmailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSString *password = [self.logInPasswordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    if ([email length] == 0 || [password length] == 0 ) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Make sure you enter a valid email and password!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alertView show];
-    }
-    else {
-        [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error) {
-            if (error) {
-                UIAlertView *alertView = [[UIAlertView alloc]    initWithTitle:@"Sorry!" message:[error.userInfo objectForKey:@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alertView show];
-            }
-            else {
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            }
-        }];
-    }
-    
+                                
 }
 
 

@@ -99,7 +99,7 @@
 }
 
 - (void)presentHomeVC {
-	UIViewController *home = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"HOME1"];
+	UIViewController *home = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"home"];
 	[[[[UIApplication sharedApplication] keyWindow] rootViewController] presentModalViewController:home animated:YES];
 }
 

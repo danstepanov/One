@@ -106,6 +106,7 @@
 		C3F465EF198358EB003DB1FA /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = C3F465EE198358EB003DB1FA /* Background.png */; };
 		C3F465F2198358F2003DB1FA /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = C3F465F0198358F2003DB1FA /* Back.png */; };
 		C3F465F3198358F2003DB1FA /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = C3F465F1198358F2003DB1FA /* Login.png */; };
+		D01FC946198BA686002A9F9D /* linkingAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01FC945198BA686002A9F9D /* linkingAccountsViewController.m */; };
 		D07F0FAE1984F19B00262167 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FAD1984F19B00262167 /* StoreKit.framework */; };
 		D07F0FBB1984F20F00262167 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FB01984F20F00262167 /* Accounts.framework */; };
 		D07F0FBC1984F20F00262167 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FB11984F20F00262167 /* AdSupport.framework */; };
@@ -120,6 +121,7 @@
 		D07F0FC51984F20F00262167 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FBA1984F20F00262167 /* SystemConfiguration.framework */; };
 		D07F0FC71984F38600262167 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FC61984F38600262167 /* FacebookSDK.framework */; };
 		D07F0FC91984F39800262167 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07F0FC81984F39800262167 /* Parse.framework */; };
+		D0E00E26198DE65F004BA222 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E00E25198DE65F004BA222 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,6 +281,8 @@
 		C3F465EE198358EB003DB1FA /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
 		C3F465F0198358F2003DB1FA /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		C3F465F1198358F2003DB1FA /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
+		D01FC944198BA686002A9F9D /* linkingAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = linkingAccountsViewController.h; path = one/linkingAccountsViewController.h; sourceTree = SOURCE_ROOT; };
+		D01FC945198BA686002A9F9D /* linkingAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = linkingAccountsViewController.m; path = one/linkingAccountsViewController.m; sourceTree = SOURCE_ROOT; };
 		D07F0FAD1984F19B00262167 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D07F0FB01984F20F00262167 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D07F0FB11984F20F00262167 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -294,6 +298,8 @@
 		D07F0FC61984F38600262167 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		D07F0FC81984F39800262167 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D07F0FCA19851A8A00262167 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D0E00E24198DE65F004BA222 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../BaseViewController.h; sourceTree = "<group>"; };
+		D0E00E25198DE65F004BA222 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../BaseViewController.m; sourceTree = "<group>"; };
 		EE61A9A53E9745E8A0A76B02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F760A57B0BE84F1DAB6F119F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -388,9 +394,12 @@
 		1363941F1978ACB600302FB9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0E00E24198DE65F004BA222 /* BaseViewController.h */,
+				D0E00E25198DE65F004BA222 /* BaseViewController.m */,
 				5062E03B1984DE25006848D6 /* Home */,
 				C32D43E81983C08100F3E5CD /* Login */,
 				C32D43E71983C07200F3E5CD /* Intro */,
+				D01FC943198BA63F002A9F9D /* Linking Accounts */,
 				C32D43E21983BF2D00F3E5CD /* Timeline */,
 				C32D43E01983BF0D00F3E5CD /* Activity */,
 				132AC48B1978CD58003107DF /* Messages */,
@@ -778,6 +787,15 @@
 			name = "Link Accounts";
 			sourceTree = "<group>";
 		};
+		D01FC943198BA63F002A9F9D /* Linking Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				D01FC944198BA686002A9F9D /* linkingAccountsViewController.h */,
+				D01FC945198BA686002A9F9D /* linkingAccountsViewController.m */,
+			);
+			name = "Linking Accounts";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -827,7 +845,7 @@
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					13CD7B621977DD5200C3F7CC = {
-						DevelopmentTeam = Z5AR6RGC9X;
+						DevelopmentTeam = 4ETUTSYY89;
 					};
 					13CD7B831977DD5300C3F7CC = {
 						TestTargetID = 13CD7B621977DD5200C3F7CC;
@@ -967,11 +985,13 @@
 				132AC4941978EB8C003107DF /* MEExpandableHeaderView.m in Sources */,
 				139C86F6197B38B700751A12 /* DZNSegmentedControl.m in Sources */,
 				5062E03A1984DE21006848D6 /* PFXHomeViewController.m in Sources */,
+				D01FC946198BA686002A9F9D /* linkingAccountsViewController.m in Sources */,
 				139C86DC197A660F00751A12 /* SOMessageInputView.m in Sources */,
 				84F2501B19837A5400013F47 /* IntroPageViewController.m in Sources */,
 				132AC49B1978EFE4003107DF /* ProfileViewController.m in Sources */,
 				136393EE1978898700302FB9 /* OneTabBarItem.m in Sources */,
 				50D522EF19848C72005224B5 /* PFXBaseIntroViewController.m in Sources */,
+				D0E00E26198DE65F004BA222 /* BaseViewController.m in Sources */,
 				13CD7BA71977DD7600C3F7CC /* OneSocialPagingViewer.m in Sources */,
 				5062E0371984D9CE006848D6 /* PFXSocialButton.m in Sources */,
 				139C86E5197A662900751A12 /* Message.m in Sources */,

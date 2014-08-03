@@ -2,7 +2,7 @@
 //  LoginViewController.m
 //  one
 //
-//  Created by William Gu on 7/26/14.
+//  Created by Daniel Stepanov on 7/26/14.
 //
 //
 
@@ -12,7 +12,7 @@
 
 @interface LoginViewController ()
 
-@property (nonatomic, weak) IBOutlet UITextField *textFieldPassword;
+
 
 @end
 
@@ -30,12 +30,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.navigationBar.translucent = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [_loginEmailField becomeFirstResponder]; //Keeps keyboard up on view
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,6 +54,7 @@
 	AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
 	AudioServicesPlaySystemSound (soundID);
 }
+
 - (IBAction)loginButtonTouched:(id)sender {
     NSString *email = [[self.loginEmailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] lowercaseStringWithLocale:nil];
     NSString *password = [self.loginPasswordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -69,14 +70,16 @@
                 [alertView show];
             }
             else {
-                [(PFXHomeViewController *)self.presentingViewController completeLogIn];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];
     }
 
 }
 
-- (IBAction)backButtonPushed:(id)sender {
+- (IBAction)loginBackButtonTouched:(id)sender{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {

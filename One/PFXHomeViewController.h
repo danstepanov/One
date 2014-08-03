@@ -2,18 +2,15 @@
 //  PFXHomeViewController.h
 //  one
 //
-//  Created by Siberia on 7/27/14.
+//  Created by Daniel Stepanov on 7/27/14.
 //
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface PFXHomeViewController : UIViewController
+@interface PFXHomeViewController : BaseViewController
 
 - (IBAction)logInPushed:(id)sender;
 - (IBAction)signUpPushed:(id)sender;
-- (void)completeSignUp;
-- (void)completeLogIn;
-
-
 @end

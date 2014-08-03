@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  One
 //
-//  Created by Dan Stepanov and Micah Benn on 7/17/14.
+//  Created by Daniel Stepanov on 7/17/14.
 //
 //
 

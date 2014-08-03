@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface PFXBaseIntroViewController : UIViewController {
+@interface PFXBaseIntroViewController : BaseViewController {
 }
 @property (nonatomic, assign, getter=index) int index;
 @property (nonatomic, retain) IBOutlet UIImageView *iPhoneImage;

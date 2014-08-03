@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  One
 //
-//  Created by Micah Benn on 7/17/14.
+//  Created by Daniel Stepanov on 7/17/14.
 //
 //
 
@@ -11,6 +11,7 @@
 @interface AppDelegate ()
 @property (nonatomic, weak) UIStoryboard *storyboard;
 @property (nonatomic, strong) PFXHomeViewController *homeVC;
+@property (nonatomic, strong) UINavigationController* authNC;
 @end
 
 @implementation AppDelegate
@@ -47,10 +48,12 @@
     NSLog(@"%@", self.storyboard);
     
     if ([PFUser currentUser] == nil) {
-        PFXHomeViewController *homeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HOME1"];
-        NSLog(@"Pointer to newly instantiated VC: %@", homeVC);
+
         
-        [self.window.rootViewController presentViewController:homeVC animated:YES completion:^(void){
+        UIViewController *home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
+        NSLog(@"Pointer to newly instantiated VC: %@", home);
+        
+        [self.window.rootViewController presentViewController:home animated:YES completion:^(void){
             NSLog(@"Log In/Sign Up (HomeViewController) modal has opened, pointer: %@",
                   self.window.rootViewController.presentedViewController);
         }];

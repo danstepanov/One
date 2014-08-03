@@ -2,17 +2,18 @@
 //  SignUpViewController.h
 //  One
 //
-//  Created by Sam Moore on 7/28/14.
+//  Created by Daniel Stepanov on 7/28/14.
 //
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SignUpViewController : UIViewController
-- (IBAction)donePushed:(id)sender;
-- (IBAction)backPushed:(id)sender;
+@interface SignUpViewController : BaseViewController
+- (IBAction)signupDoneButtonTouched:(id)sender;
+- (IBAction)signupBackButtonTouched:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *signupEmailField;
+@property (weak, nonatomic) IBOutlet UITextField *signupPasswordField;
 
 @end

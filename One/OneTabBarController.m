@@ -28,7 +28,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabBar.selectedImageTintColor = [UIColor flatLightBlueColor];
-}
+    
+    // Present the auth stack if we need to
+    UIViewController* foo = [UIViewController new];
+    UINavigationController* authNC = [[UINavigationController alloc] initWithRootViewController:foo];
+    authNC.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    
+    [self presentViewController:authNC animated:YES completion:nil];
+    NSLog(@"Should have presented...");
+        }
 
 - (void)didReceiveMemoryWarning
 {

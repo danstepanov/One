@@ -149,6 +149,10 @@ static NSArray *relationshipButtons;
     [facebookEditButton addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:facebookEditButton];
     
+    [facebookRelationshipButton addTarget:self action:
+     @selector(unfriend:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:facebookRelationshipButton];
+    
     for (UIButton *editButton in editButtons) {
         editButton.frame = CGRectMake(10, 40, 40, 10);
         [editButton setTitle:@"Edit" forState:UIControlStateNormal];
@@ -221,7 +225,7 @@ static NSArray *relationshipButtons;
     [PFUser logOut];
     if ([PFUser currentUser] == nil) {
         NSLog(@"Root View Controller of ProfileVC: %@", self.tabBarController.storyboard);
-        PFXHomeViewController *homeVC = [self.tabBarController.storyboard instantiateViewControllerWithIdentifier:@"HOME1"];
+        PFXHomeViewController *homeVC = [self.tabBarController.storyboard instantiateViewControllerWithIdentifier:@"home"];
         NSLog(@"Pointer to newly instantiated VC: %@", homeVC);
         
         [self presentViewController:homeVC animated:YES completion:^(void){
@@ -232,6 +236,8 @@ static NSArray *relationshipButtons;
         }];
     }
 }
+
+
 
 - (void)setBackgroundColor:(UIColor*)color{
     
